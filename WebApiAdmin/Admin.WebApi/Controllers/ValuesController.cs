@@ -7,6 +7,9 @@ using System.Web.Http;
 
 namespace Admin.WebApi.Controllers
 {
+    /// <summary>
+    /// test
+    /// </summary>
     public class ValuesController : ApiController
     {
         // GET api/values
