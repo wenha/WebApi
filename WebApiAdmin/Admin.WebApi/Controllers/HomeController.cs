@@ -10,9 +10,13 @@ namespace Admin.WebApi.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            var indexHtml = HttpContext.Server.MapPath("/index.html");
+            if (System.IO.File.Exists(indexHtml))
+            {
+                return Content(System.IO.File.ReadAllText(indexHtml), "text/html");
+            }
 
-            return View();
+            return Redirect("/swagger/ui/index");
         }
     }
 }

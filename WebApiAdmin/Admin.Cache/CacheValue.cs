@@ -12,7 +12,6 @@ namespace Admin.Cache
         /// 过期时间（相对时间）
         /// </summary>
         public TimeSpan SlidingExpiration { get; set; }
-
         /// <summary>
         /// 值
         /// </summary>

@@ -1,9 +1,5 @@
-﻿using Admin.Cache.Base;
-using System;
-using System.Collections.Generic;
+﻿using Admin.Cache.Redis;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;

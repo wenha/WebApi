@@ -232,7 +232,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
@@ -271,7 +270,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Admin.Cache\Admin.Cache.csproj">
-      <Project>{E5C45860-F8D8-4CC3-9D1A-8B0E5C443B7A}</Project>
+      <Project>{CA5C70DE-F8BE-4D00-8E00-BA718B752D1C}</Project>
       <Name>Admin.Cache</Name>
     </ProjectReference>
   </ItemGroup>

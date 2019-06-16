@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Admin.Cache.Base
+namespace Admin.Cache.Redis
 {
-    public class RedisKeyCollection : NameObjectCollectionBase
+    public class RedisKeysCollection : NameObjectCollectionBase
     {
         internal void Add(string key, object value)
         {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.SessionState;
 
-namespace Admin.Cache.Base
+namespace Admin.Cache.Redis
 {
     public class RedisSession : HttpSessionStateBase
     {
@@ -181,7 +181,7 @@ namespace Admin.Cache.Base
         {
             get
             {
-                var keys = new RedisKeyCollection();
+                var keys = new RedisKeysCollection();
                 var all = _db.HashKeys(SessionKey);
                 SetExpire();
                 foreach (var item in all)

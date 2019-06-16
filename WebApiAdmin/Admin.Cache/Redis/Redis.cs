@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WC = System.Web.Caching;
 
-namespace Admin.Cache.Base
+namespace Admin.Cache.Redis
 {
     public class Redis : CacheBase
     {
@@ -24,7 +24,7 @@ namespace Admin.Cache.Base
             Connection?.Dispose();
             Connection = ConnectionMultiplexer.Connect(connectStr);
         }
-
+        
         /// <summary>
         /// 获取缓存值，为null时缓存不存在
         /// </summary>
