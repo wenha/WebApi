@@ -60,6 +60,7 @@
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
@@ -142,12 +143,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ApiErrorAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Swagger\SwaggerConfig.cs" />
     <Compile Include="App_Start\Swagger\SwaggerControllerDescProvider.cs" />
     <Compile Include="App_Start\Swagger\SwaggerHttpHeaderFilter.cs" />
+    <Compile Include="App_Start\UserAuthorizeAttribute.cs" />
+    <Compile Include="App_Start\TokenAuthorizeAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -177,11 +181,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiReturnData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -272,6 +277,10 @@
     <ProjectReference Include="..\Admin.Cache\Admin.Cache.csproj">
       <Project>{CA5C70DE-F8BE-4D00-8E00-BA718B752D1C}</Project>
       <Name>Admin.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Admin.ViewModel\Admin.ViewModel.csproj">
+      <Project>{432CB7F3-4705-4F13-9DFF-9620BC761141}</Project>
+      <Name>Admin.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
