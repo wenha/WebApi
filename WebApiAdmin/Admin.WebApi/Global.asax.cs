@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Admin.Cache.Base;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -18,6 +20,9 @@ namespace Admin.WebApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //设置redis连接地址
+            Redis.SetConnection(ConfigurationManager.ConnectionStrings["RedisConnection"].ConnectionString);
         }
     }
 }
