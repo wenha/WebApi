@@ -51,6 +51,13 @@ class HttpRequest {
       return { data, status }
     }, error => {
       this.destroy(url)
+      if (error.response.status === 401) {
+        Cookies.remove(TOKEN_KEY)
+        window.location.href = window.location.pathname + '#/login'
+        Message.error('未登录，或登录失效，请登录')
+      } else {
+        Message.error('服务内部错误')
+      }
       let errorInfo = error.response
       if (!errorInfo) {
         const { request: { statusText, status }, config } = JSON.parse(JSON.stringify(error))

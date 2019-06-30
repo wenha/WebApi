@@ -50,8 +50,8 @@ namespace Admin.WebApi.Models
     /// 方法返回分页数据
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ReturnPagging<T> : ApiReturnData, IEnumerable<T> where T : class
-    {
+    public class ReturnPagging<T> : ApiReturnData
+    { 
         /// <summary>
         /// 页大小
         /// </summary>
@@ -72,20 +72,9 @@ namespace Admin.WebApi.Models
         /// </summary>
         public int PageCount => PageSize == 0 ? 0 : (int)(Math.Floor((Total - 1) * 1.0 / PageSize) + 1);
 
+        /// <summary>
+        /// 分页数据
+        /// </summary>
         public T[] Data { get; set; }
-
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            foreach (T data in Data)
-            {
-                yield return data;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Data.GetEnumerator();
-        }
     }
 }

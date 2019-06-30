@@ -16,7 +16,7 @@ namespace Admin.WebApi.Controllers
                 return Content(System.IO.File.ReadAllText(indexHtml), "text/html");
             }
 
-            return Redirect("/swagger/ui/index");
+            return Redirect("/apis/index");
         }
     }
 }

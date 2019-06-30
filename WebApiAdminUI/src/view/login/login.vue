@@ -7,8 +7,7 @@
     <div class="login-con">
       <Card icon="log-in" title="欢迎登录" :bordered="false">
         <div class="form-con">
-          <login-form @on-success-valid="handleSubmit"></login-form>
-          <p class="login-tip">输入任意用户名和密码即可</p>
+          <login-form ref="login-form" @on-success-valid="handleSubmit"></login-form>
         </div>
       </Card>
     </div>
@@ -27,13 +26,24 @@ export default {
       'handleLogin',
       'getUserInfo'
     ]),
-    handleSubmit ({ userName, password }) {
-      this.handleLogin({ userName, password }).then(res => {
+    handleSubmit ({ userName, password, code }) {
+      this.handleLogin({ userName, password, code }).then(res => {
+        console.log(res)
+        if (!res.data.success) {
+          this.$refs['login-form'].loadingFalse()
+          this.$Message.error(res.data.msg)
+          if (res.data.status !== 'WrongYzm') {
+            this.$refs['login-form'].getValidateImage()
+          }
+          return
+        }
         this.getUserInfo().then(res => {
           this.$router.push({
             name: this.$config.homeName
           })
         })
+      }).catch(function (error) {
+        console.log('er', error)
       })
     }
   }
