@@ -71,7 +71,7 @@ namespace Admin.WebApi.Models
         /// 页数
         /// </summary>
         public int PageCount => PageSize == 0 ? 0 : (int)(Math.Floor((Total - 1) * 1.0 / PageSize) + 1);
-
+    
         /// <summary>
         /// 分页数据
         /// </summary>
