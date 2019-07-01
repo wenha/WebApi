@@ -5,8 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="972e95a10e0d4294b897331f1ef12672" Name="Diagram1">
-        <EntityTypeShape EntityType="WebApiModel.SysUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-      </Diagram>
+        <EntityTypeShape EntityType="WebApiModel.SysAccount" Width="1.5" PointX="2.75" PointY="0.5" />
+        <EntityTypeShape EntityType="WebApiModel.SysOrgan" Width="1.5" PointX="0.625" PointY="0.5" />
+        <EntityTypeShape EntityType="WebApiModel.SysUser" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="WebApiModel.SysAccountRole" Width="1.5" PointX="4.875" PointY="0.75" />
+        <EntityTypeShape EntityType="WebApiModel.SysRoleMenu" Width="1.5" PointX="7.125" PointY="3.375" />
+        <AssociationConnector Association="WebApiModel.SysAccountSysOrgan" />
+        <AssociationConnector Association="WebApiModel.SysAccountSysAccountRole" />
+        <EntityTypeShape EntityType="WebApiModel.SysMenu" Width="1.5" PointX="5" PointY="3" />
+        <EntityTypeShape EntityType="WebApiModel.SysRole" Width="1.5" PointX="7.125" PointY="0.75" />
+        <AssociationConnector Association="WebApiModel.SysRoleSysAccountRole" />
+        <AssociationConnector Association="WebApiModel.SysRoleSysRoleMenu" />
+        <AssociationConnector Association="WebApiModel.SysRoleMenuSysMenu" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

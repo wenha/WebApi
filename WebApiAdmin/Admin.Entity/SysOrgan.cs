@@ -12,15 +12,11 @@ namespace Admin.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class SysUser
+    public partial class SysOrgan
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string CertNo { get; set; }
-        public string Phone { get; set; }
-        public Nullable<byte> Sex { get; set; }
-        public string Password { get; set; }
-        public string AvatorImg { get; set; }
+        public int ParentId { get; set; }
         public System.DateTime AddTime { get; set; }
         public bool IsDelete { get; set; }
     }

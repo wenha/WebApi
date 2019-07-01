@@ -25,6 +25,12 @@ namespace Admin.Entity
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<SysAccount> SysAccount { get; set; }
+        public virtual DbSet<SysOrgan> SysOrgan { get; set; }
         public virtual DbSet<SysUser> SysUser { get; set; }
+        public virtual DbSet<SysAccountRole> SysAccountRole { get; set; }
+        public virtual DbSet<SysRoleMenu> SysRoleMenu { get; set; }
+        public virtual DbSet<SysMenu> SysMenu { get; set; }
+        public virtual DbSet<SysRole> SysRole { get; set; }
     }
 }

@@ -69,6 +69,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysAccount.cs">
+      <DependentUpon>WebApi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysAccountRole.cs">
+      <DependentUpon>WebApi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysMenu.cs">
+      <DependentUpon>WebApi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysOrgan.cs">
+      <DependentUpon>WebApi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysRole.cs">
+      <DependentUpon>WebApi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysRoleMenu.cs">
+      <DependentUpon>WebApi.tt</DependentUpon>
+    </Compile>
     <Compile Include="SysUser.cs">
       <DependentUpon>WebApi.tt</DependentUpon>
     </Compile>

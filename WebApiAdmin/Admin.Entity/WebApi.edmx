@@ -4,64 +4,341 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebApiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebApiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SysAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="OrganId" Type="int" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysAccountRole">
+          <Key>
+            <PropertyRef Name="AccountId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
+          <Property Name="ParentId" Type="tinyint" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysOrgan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SysRoleMenu">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="RoleId" Type="tinyint" Nullable="false" />
+          <Property Name="MenuId" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="SysUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CertNo" Type="nvarchar" MaxLength="20" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sex" Type="tinyint" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="AvatorImg" Type="nvarchar" MaxLength="200" />
           <Property Name="AddTime" Type="datetime" Nullable="false" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="WebApiModelStoreContainer">
+          <EntitySet Name="SysAccount" EntityType="Self.SysAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysAccountRole" EntityType="Self.SysAccountRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysMenu" EntityType="Self.SysMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysOrgan" EntityType="Self.SysOrgan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysRole" EntityType="Self.SysRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysRoleMenu" EntityType="Self.SysRoleMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysUser" EntityType="Self.SysUser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebApiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebApiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SysAccount" EntityType="WebApiModel.SysAccount" />
+          <EntitySet Name="SysOrgan" EntityType="WebApiModel.SysOrgan" />
+          <EntitySet Name="SysUser" EntityType="WebApiModel.SysUser" />
+          <EntitySet Name="SysAccountRole" EntityType="WebApiModel.SysAccountRole" />
+          <EntitySet Name="SysRoleMenu" EntityType="WebApiModel.SysRoleMenu" />
+          <AssociationSet Name="SysAccountSysOrgan" Association="WebApiModel.SysAccountSysOrgan">
+            <End Role="SysAccount" EntitySet="SysAccount" />
+            <End Role="SysOrgan" EntitySet="SysOrgan" />
+          </AssociationSet>
+          <AssociationSet Name="SysAccountSysAccountRole" Association="WebApiModel.SysAccountSysAccountRole">
+            <End Role="SysAccount" EntitySet="SysAccount" />
+            <End Role="SysAccountRole" EntitySet="SysAccountRole" />
+          </AssociationSet>
+          <EntitySet Name="SysMenu" EntityType="WebApiModel.SysMenu" />
+          <EntitySet Name="SysRole" EntityType="WebApiModel.SysRole" />
+          <AssociationSet Name="SysRoleSysAccountRole" Association="WebApiModel.SysRoleSysAccountRole">
+            <End Role="SysRole" EntitySet="SysRole" />
+            <End Role="SysAccountRole" EntitySet="SysAccountRole" />
+          </AssociationSet>
+          <AssociationSet Name="SysRoleSysRoleMenu" Association="WebApiModel.SysRoleSysRoleMenu">
+            <End Role="SysRole" EntitySet="SysRole" />
+            <End Role="SysRoleMenu" EntitySet="SysRoleMenu" />
+          </AssociationSet>
+          <AssociationSet Name="SysRoleMenuSysMenu" Association="WebApiModel.SysRoleMenuSysMenu">
+            <End Role="SysRoleMenu" EntitySet="SysRoleMenu" />
+            <End Role="SysMenu" EntitySet="SysMenu" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="SysAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OrganId" Type="Int32" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SysOrgan" Relationship="WebApiModel.SysAccountSysOrgan" FromRole="SysAccount" ToRole="SysOrgan" />
+          <NavigationProperty Name="SysAccountRole" Relationship="WebApiModel.SysAccountSysAccountRole" FromRole="SysAccount" ToRole="SysAccountRole" />
+        </EntityType>
+        <EntityType Name="SysOrgan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="SysUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CertNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sex" Type="Byte" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AvatorImg" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="WebApiEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="SysUser" EntityType="Self.SysUser" />
-        </EntityContainer>
-      </Schema>
+        <EntityType Name="SysAccountRole">
+          <Key>
+            <PropertyRef Name="AccountId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="SysAccount" Relationship="WebApiModel.SysAccountSysAccountRole" FromRole="SysAccountRole" ToRole="SysAccount" />
+          <NavigationProperty Name="SysRole" Relationship="WebApiModel.SysRoleSysAccountRole" FromRole="SysAccountRole" ToRole="SysRole" />
+        </EntityType>
+        <EntityType Name="SysRoleMenu">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="RoleId" Type="Byte" Nullable="false" />
+          <Property Name="MenuId" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="SysRole" Relationship="WebApiModel.SysRoleSysRoleMenu" FromRole="SysRoleMenu" ToRole="SysRole" />
+          <NavigationProperty Name="SysMenu" Relationship="WebApiModel.SysRoleMenuSysMenu" FromRole="SysRoleMenu" ToRole="SysMenu" />
+        </EntityType>
+        <Association Name="SysAccountSysOrgan">
+          <End Type="WebApiModel.SysAccount" Role="SysAccount" Multiplicity="*" />
+          <End Type="WebApiModel.SysOrgan" Role="SysOrgan" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="SysOrgan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysAccount">
+              <PropertyRef Name="OrganId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SysAccountSysAccountRole">
+          <End Type="WebApiModel.SysAccount" Role="SysAccount" Multiplicity="1" />
+          <End Type="WebApiModel.SysAccountRole" Role="SysAccountRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysAccountRole">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SysMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="ParentId" Type="Byte" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SysAccountRole" Relationship="WebApiModel.SysRoleSysAccountRole" FromRole="SysRole" ToRole="SysAccountRole" />
+          <NavigationProperty Name="SysRoleMenu" Relationship="WebApiModel.SysRoleSysRoleMenu" FromRole="SysRole" ToRole="SysRoleMenu" />
+        </EntityType>
+        <Association Name="SysRoleSysAccountRole">
+          <End Type="WebApiModel.SysRole" Role="SysRole" Multiplicity="1" />
+          <End Type="WebApiModel.SysAccountRole" Role="SysAccountRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysAccountRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SysRoleSysRoleMenu">
+          <End Type="WebApiModel.SysRole" Role="SysRole" Multiplicity="1" />
+          <End Type="WebApiModel.SysRoleMenu" Role="SysRoleMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SysRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysRoleMenu">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SysRoleMenuSysMenu">
+          <End Type="WebApiModel.SysRoleMenu" Role="SysRoleMenu" Multiplicity="*" />
+          <End Type="WebApiModel.SysMenu" Role="SysMenu" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="SysMenu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SysRoleMenu">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WebApiModelStoreContainer" CdmEntityContainer="WebApiEntities">
+          <EntitySetMapping Name="SysAccount">
+            <EntityTypeMapping TypeName="WebApiModel.SysAccount">
+              <MappingFragment StoreEntitySet="SysAccount">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="OrganId" ColumnName="OrganId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysOrgan">
+            <EntityTypeMapping TypeName="WebApiModel.SysOrgan">
+              <MappingFragment StoreEntitySet="SysOrgan">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SysUser">
             <EntityTypeMapping TypeName="WebApiModel.SysUser">
               <MappingFragment StoreEntitySet="SysUser">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CertNo" ColumnName="CertNo" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="AvatorImg" ColumnName="AvatorImg" />
-                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="AvatorImg" ColumnName="AvatorImg" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CertNo" ColumnName="CertNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysAccountRole">
+            <EntityTypeMapping TypeName="WebApiModel.SysAccountRole">
+              <MappingFragment StoreEntitySet="SysAccountRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysRoleMenu">
+            <EntityTypeMapping TypeName="WebApiModel.SysRoleMenu">
+              <MappingFragment StoreEntitySet="SysRoleMenu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysMenu">
+            <EntityTypeMapping TypeName="WebApiModel.SysMenu">
+              <MappingFragment StoreEntitySet="SysMenu">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysRole">
+            <EntityTypeMapping TypeName="WebApiModel.SysRole">
+              <MappingFragment StoreEntitySet="SysRole">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
