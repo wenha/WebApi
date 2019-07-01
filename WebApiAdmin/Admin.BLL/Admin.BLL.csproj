@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="BaseBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\AccountBll.cs" />
     <Compile Include="Sys\UserBll.cs" />
   </ItemGroup>
   <ItemGroup>

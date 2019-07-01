@@ -162,6 +162,7 @@
     <Compile Include="App_Start\TokenAuthorizeAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\SystemController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
@@ -246,6 +247,10 @@
     <ProjectReference Include="..\Admin.Cache\Admin.Cache.csproj">
       <Project>{CA5C70DE-F8BE-4D00-8E00-BA718B752D1C}</Project>
       <Name>Admin.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Admin.IBLL\Admin.IBLL.csproj">
+      <Project>{9D84A578-8468-4679-9D72-CE3645FC1709}</Project>
+      <Name>Admin.IBLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Admin.ViewModel\Admin.ViewModel.csproj">
       <Project>{432CB7F3-4705-4F13-9DFF-9620BC761141}</Project>
