@@ -24,14 +24,14 @@ namespace Admin.ViewModel
         public string UserName { get; set; }
 
         /// <summary>
-        /// 密码
-        /// </summary>
-        public string Password { get; set; }
-
-        /// <summary>
         /// 头像
         /// </summary>
         public string Avatar { get; set; }
+
+        /// <summary>
+        /// 访问权限
+        /// </summary>
+        public string[] Access { get; set; }
 
     }
 }

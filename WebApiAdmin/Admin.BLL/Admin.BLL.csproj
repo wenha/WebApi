@@ -88,6 +88,8 @@
     <Compile Include="BaseBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys\AccountBll.cs" />
+    <Compile Include="Sys\OrganBll.cs" />
+    <Compile Include="Sys\RoleBll.cs" />
     <Compile Include="Sys\UserBll.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,9 +98,17 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Admin.Entity\Admin.Entity.csproj">
+      <Project>{3C9BAE18-FAF6-4CEB-884A-C746D2E68A1A}</Project>
+      <Name>Admin.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Admin.IBLL\Admin.IBLL.csproj">
       <Project>{9D84A578-8468-4679-9D72-CE3645FC1709}</Project>
       <Name>Admin.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Admin.IDAL\Admin.IDAL.csproj">
+      <Project>{B614E5C3-571D-4A8A-A614-B9135F2DE386}</Project>
+      <Name>Admin.IDAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,6 @@
-﻿using Admin.IBLL.Sys;
+﻿using Admin.Common;
+using Admin.IBLL.Sys;
+using Admin.WebApi.Areas.Admin.Models;
 using Admin.WebApi.Models;
 using System;
 using System.Collections.Generic;
@@ -22,5 +24,42 @@ namespace Admin.WebApi.Areas.Admin.Controllers
 
         #endregion
 
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost]
+        public ApiReturnData<string> Login([FromBody]AdminLoginInput login)
+        {
+            var resData = new ApiReturnData<string>();
+
+            var account = AccountBll.Value.GetAccountByName(login.LoginName);
+
+            if(account == null)
+            {
+                resData.Code = "NotFindAccount";
+                resData.Data = "";
+                resData.IsSuccess = false;
+                return SetMessage(resData);
+            }
+            if(account.Password != SecurityHelper.MD5(login.Password))
+            {
+                resData.Code = "WrongPassword";
+                resData.Data = "";
+                resData.IsSuccess = false;
+                return SetMessage(resData);
+            }
+            LoginUser = new ViewModel.UserInfo()
+            {
+                Id = account.Id,
+                Name = account.Name,
+                UserName = account.LoginName,
+
+            };
+            resData.Data = SessionId;
+            return SetMessage(resData);
+        }
     }
 }

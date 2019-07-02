@@ -165,6 +165,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\SystemController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminLoginInput.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -179,6 +180,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="App_LocalResources\Message.resx" />
     <EmbeddedResource Include="Content\Swagger\theme-flattop.css" />
     <EmbeddedResource Include="Content\Swagger\translator.js" />
     <Content Include="favicon.ico" />
@@ -211,7 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +248,14 @@
     <ProjectReference Include="..\Admin.Cache\Admin.Cache.csproj">
       <Project>{CA5C70DE-F8BE-4D00-8E00-BA718B752D1C}</Project>
       <Name>Admin.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Admin.Common\Admin.Common.csproj">
+      <Project>{5CB231F5-1911-427F-A4C1-F8BA43894439}</Project>
+      <Name>Admin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Admin.Entity\Admin.Entity.csproj">
+      <Project>{3C9BAE18-FAF6-4CEB-884A-C746D2E68A1A}</Project>
+      <Name>Admin.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Admin.IBLL\Admin.IBLL.csproj">
       <Project>{9D84A578-8468-4679-9D72-CE3645FC1709}</Project>
