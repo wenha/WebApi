@@ -110,6 +110,10 @@
       <Project>{B614E5C3-571D-4A8A-A614-B9135F2DE386}</Project>
       <Name>Admin.IDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Admin.ViewModel\Admin.ViewModel.csproj">
+      <Project>{432CB7F3-4705-4F13-9DFF-9620BC761141}</Project>
+      <Name>Admin.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

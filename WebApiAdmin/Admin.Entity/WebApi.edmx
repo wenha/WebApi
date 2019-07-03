@@ -51,9 +51,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SysRoleMenu">
           <Key>
@@ -217,11 +217,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SysAccountRole" Relationship="WebApiModel.SysRoleSysAccountRole" FromRole="SysRole" ToRole="SysAccountRole" />
           <NavigationProperty Name="SysRoleMenu" Relationship="WebApiModel.SysRoleSysRoleMenu" FromRole="SysRole" ToRole="SysRoleMenu" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="SysRoleSysAccountRole">
           <End Type="WebApiModel.SysRole" Role="SysRole" Multiplicity="1" />
@@ -335,9 +335,9 @@
           <EntitySetMapping Name="SysRole">
             <EntityTypeMapping TypeName="WebApiModel.SysRole">
               <MappingFragment StoreEntitySet="SysRole">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

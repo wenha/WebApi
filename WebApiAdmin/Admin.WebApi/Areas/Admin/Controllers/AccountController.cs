@@ -20,7 +20,7 @@ namespace Admin.WebApi.Areas.Admin.Controllers
     {
         #region 公共类
 
-        [Export(typeof(IAccountBll))]
+        [Import(typeof(IAccountBll))]
         protected Lazy<IAccountBll> AccountBll { get; set; }
 
         #endregion
@@ -32,7 +32,7 @@ namespace Admin.WebApi.Areas.Admin.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
-        [ApiAuthor(Name = "wenha", Status = DevStatus.Wait, Time = "2019-07-01")]
+        [ApiAuthor(Name = "wenha", Status = DevStatus.Finish, Time = "2019-07-01")]
         public ApiReturnData<string> Login([FromBody]AdminLoginInput login)
         {
             var resData = new ApiReturnData<string>();
@@ -46,7 +46,9 @@ namespace Admin.WebApi.Areas.Admin.Controllers
                 resData.IsSuccess = false;
                 return SetMessage(resData);
             }
-            if(account.Password != SecurityHelper.MD5(login.Password))
+
+            var pwd = SecurityHelper.MD5(login.Password);
+            if (account.Password != SecurityHelper.MD5(login.Password))
             {
                 resData.Code = "WrongPassword";
                 resData.Data = "";
@@ -61,6 +63,21 @@ namespace Admin.WebApi.Areas.Admin.Controllers
 
             };
             resData.Data = SessionId;
+            return SetMessage(resData);
+        }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [ApiAuthor(Name = "wenha", Status = DevStatus.Finish, Time = "2019-07-03")]
+        public ApiReturnData<bool> LoginOut()
+        {
+            var resData = new ApiReturnData<bool>();
+
+            LoginUser = null;
+
             return SetMessage(resData);
         }
     }

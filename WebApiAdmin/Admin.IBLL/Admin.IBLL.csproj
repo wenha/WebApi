@@ -70,6 +70,10 @@
       <Project>{3C9BAE18-FAF6-4CEB-884A-C746D2E68A1A}</Project>
       <Name>Admin.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Admin.ViewModel\Admin.ViewModel.csproj">
+      <Project>{432CB7F3-4705-4F13-9DFF-9620BC761141}</Project>
+      <Name>Admin.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

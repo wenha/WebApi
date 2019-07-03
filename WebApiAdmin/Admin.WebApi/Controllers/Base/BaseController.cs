@@ -212,8 +212,8 @@ namespace Admin.WebApi.Controllers
         protected void Compose()
         {
             var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.Load("ETL.EightPersonnelCloudEdu.BLL")));
-            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.Load("ETL.EightPersonnelCloudEdu.DAL")));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.Load("Admin.BLL")));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.Load("Admin.DAL")));
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
         }

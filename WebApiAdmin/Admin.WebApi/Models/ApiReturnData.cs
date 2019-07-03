@@ -50,7 +50,7 @@ namespace Admin.WebApi.Models
     /// 方法返回分页数据
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ReturnPagging<T> : ApiReturnData
+    public class ReturnPagging<T> 
     { 
         /// <summary>
         /// 页大小
@@ -66,11 +66,6 @@ namespace Admin.WebApi.Models
         /// 总数
         /// </summary>
         public int Total { get; set; }
-
-        /// <summary>
-        /// 页数
-        /// </summary>
-        public int PageCount => PageSize == 0 ? 0 : (int)(Math.Floor((Total - 1) * 1.0 / PageSize) + 1);
     
         /// <summary>
         /// 分页数据
