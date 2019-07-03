@@ -2,6 +2,7 @@
 using Admin.IBLL.Sys;
 using Admin.WebApi.Areas.Admin.Models;
 using Admin.WebApi.Models;
+using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -31,6 +32,7 @@ namespace Admin.WebApi.Areas.Admin.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
+        [ApiAuthor(Name = "wenha", Status = DevStatus.Wait, Time = "2019-07-01")]
         public ApiReturnData<string> Login([FromBody]AdminLoginInput login)
         {
             var resData = new ApiReturnData<string>();

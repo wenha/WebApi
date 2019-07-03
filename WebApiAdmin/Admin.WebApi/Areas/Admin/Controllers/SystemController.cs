@@ -1,4 +1,5 @@
 ﻿using Admin.WebApi.Models;
+using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Admin.WebApi.Areas.Admin.Controllers
         /// 获取所有的角色
         /// </summary>
         /// <returns></returns>
+        [ApiAuthor(Name = "wenha", Status = DevStatus.Dev, Time = "2019-07-01")]
         public ApiReturnData<List<string>> GetAllRole()
         {
             var resData = new ApiReturnData<List<string>>();
