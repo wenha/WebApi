@@ -15,8 +15,9 @@ namespace Admin.WebApi
 
             routes.MapRoute(
                 name: "Default",
-                url: "api/{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "Admin.WebApi.Controllers" }
             );
         }
     }

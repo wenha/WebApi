@@ -23,7 +23,7 @@ namespace Admin.WebApi.App_Start.Swagger
         public void Apply(SwaggerDocument swaggerDoc, SchemaRegistry schemaRegistry, IApiExplorer apiExplorer)
         {
             IDictionary<string, PathItem> replacePaths = new ConcurrentDictionary<string, PathItem>();
-            var nplen = 3; //程序集的命名空间用.分隔之后数组长度
+            var nplen = 2; //程序集的命名空间用.分隔之后数组长度
             foreach (var item in swaggerDoc.paths)
             {
                 string key = item.Key;

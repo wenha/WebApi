@@ -38,19 +38,8 @@ namespace Admin.WebApi.Controllers
         /// </summary>
         public virtual UserInfo LoginUser
         {
-            get
-            {
-                if (_loginUser == null)
-                {
-                    _loginUser = Session["LoginUser"] as UserInfo;
-                }
-                return _loginUser;
-            }
-            protected set
-            {
-                _loginUser = value;
-                Session.Add("LoginUser", _loginUser);
-            }
+            get => _loginUser;
+            protected set => _loginUser = value;
         }
 
         #endregion

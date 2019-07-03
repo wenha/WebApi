@@ -33,8 +33,7 @@ namespace Admin.WebApi
 
                 //增加token至请求头部
                 c.ApiKey("Authorization").Description("token 唯一值").In("header").Name("token");
-
-                //xml描述文档
+                
                 //加载运行目录下的所有注释文档
                 var pathXml = string.Format("{0}/bin/", AppDomain.CurrentDomain.BaseDirectory);
                 var fileXml = Directory.GetFiles(pathXml).Where(o => Path.GetExtension(o).ToLower() == ".xml");

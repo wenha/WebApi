@@ -1,16 +1,17 @@
 ﻿using Admin.ViewModel;
-using Admin.WebApi.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
-namespace Admin.WebApi.Areas.Admin.Controllers
+namespace Admin.WebApi.Controllers
 {
     /// <summary>
-    /// 后台控制器基类
+    /// 前台用户控制器基类
     /// </summary>
-    public abstract class AdminBaseController : BaseController
+    public abstract class UserBaseController : BaseController
     {
         public override UserInfo LoginUser
         {
@@ -18,13 +19,13 @@ namespace Admin.WebApi.Areas.Admin.Controllers
             protected set
             {
                 base.LoginUser = value;
-                Session["LoginAdmin"] = value;
+                Session["LoginUser"] = value;
             }
         }
 
-        protected AdminBaseController()
+        protected UserBaseController()
         {
-            base.LoginUser = Session["LoginAdmin"] as UserInfo;
+            base.LoginUser = Session["LoginUser"] as UserInfo;
         }
     }
 }
