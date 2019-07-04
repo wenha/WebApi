@@ -1,5 +1,6 @@
 ﻿using Admin.Common;
 using Admin.IBLL.Sys;
+using Admin.ViewModel;
 using Admin.WebApi.Areas.Admin.Models;
 using Admin.WebApi.Models;
 using Swashbuckle.Swagger.Annotations;
@@ -77,6 +78,21 @@ namespace Admin.WebApi.Areas.Admin.Controllers
             var resData = new ApiReturnData<bool>();
 
             LoginUser = null;
+
+            return SetMessage(resData);
+        }
+
+        /// <summary>
+        /// 获取后台用户信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [ApiAuthor(Name = "wenha", Status = DevStatus.Finish, Time = "2019-07-04")]
+        public ApiReturnData<UserInfo> Info()
+        {
+            var resData = new ApiReturnData<UserInfo>();
+
+            resData.Data = LoginUser;
 
             return SetMessage(resData);
         }

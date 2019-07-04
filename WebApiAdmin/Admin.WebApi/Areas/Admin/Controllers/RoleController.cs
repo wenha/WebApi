@@ -48,5 +48,10 @@ namespace Admin.WebApi.Areas.Admin.Controllers
             });
             return res;
         }
+
+        public ApiReturnData<List<RoleOutput>> GetAllRole()
+        {
+
+        }
     }
 }

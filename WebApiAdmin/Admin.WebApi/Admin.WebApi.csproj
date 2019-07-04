@@ -165,7 +165,6 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SystemController.cs" />
     <Compile Include="Areas\Admin\Models\AdminLoginInput.cs" />
     <Compile Include="Areas\Admin\Models\Sys\RoleOutput.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />

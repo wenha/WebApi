@@ -21,5 +21,49 @@ namespace Admin.IBLL.Sys
         /// <param name="where"></param>
         /// <returns></returns>
         Pagging<VmRole> GetRolePagging(QueryPagging queryPagging, VmRole where);
+
+        /// <summary>
+        /// 获取所有角色
+        /// </summary>
+        /// <returns></returns>
+        List<VmRole> GetAllRole();
+
+        /// <summary>
+        /// 获取角色信息
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        VmRole GetRoleById(int roleId);
+
+        /// <summary>
+        /// 保存角色
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        bool SaveRole(VmRole entity, out string code);
+
+        /// <summary>
+        /// 根据Id删除角色
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        bool DeleteRole(int roleId, out string code);
+
+        /// <summary>
+        /// 获取所有后台所有菜单
+        /// </summary>
+        /// <returns></returns>
+        List<SysMenu> GetAllMenu();
+
+        /// <summary>
+        /// 保存角色菜单权限
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <param name="menus"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        bool SaveRoleMenu(int roleId, int[] menus, out string code);
     }
 }
