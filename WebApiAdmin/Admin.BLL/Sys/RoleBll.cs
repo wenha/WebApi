@@ -23,6 +23,9 @@ namespace Admin.BLL.Sys
         [Import(typeof(IRoleDal))]
         protected Lazy<IRoleDal> RoleDal { get; set; }
 
+        [Import(typeof(IMenuDal))]
+        protected Lazy<IMenuDal> MenuDal { get; set; }
+
         #endregion
 
         /// <summary>
@@ -86,7 +89,14 @@ namespace Admin.BLL.Sys
 
             var role = new SysRole();
 
-            role.na
+            role.Name = entity.Name;
+            role.Description = entity.Description;
+            role.IsDelete = false;
+
+            RoleDal.Value.Add(role);
+            SaveChanges();
+
+            return true;
         }
 
         /// <summary>
@@ -115,7 +125,17 @@ namespace Admin.BLL.Sys
         /// <returns></returns>
         public List<SysMenu> GetAllMenu()
         {
+            return MenuDal.Value.GetQueryable().Where(m => !m.IsDelete).ToList();
+        }
 
+        /// <summary>
+        /// 根据角色Id获取菜单
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        public List<SysMenu> GetRoleMenu(int roleId)
+        {
+            return RoleDal.Value.GetQueryable().FirstOrDefault(r => r.Id == roleId).SysRoleMenu.Select(r => r.SysMenu).ToList();
         }
 
         /// <summary>
@@ -127,7 +147,30 @@ namespace Admin.BLL.Sys
         /// <returns></returns>
         public bool SaveRoleMenu(int roleId, int[] menus, out string code)
         {
+            code = "OK";
+            var role = RoleDal.Value.GetQueryable().FirstOrDefault(r => r.Id == roleId);
 
+            var roleMenus = role.SysRoleMenu.Select(r => Convert.ToInt32(r.MenuId));
+
+            var addMenus = menus.Except(roleMenus);
+            var deleteMenus = roleMenus.Except(menus);
+
+            foreach(var menuId in addMenus)
+            {
+                var roleMenu = new SysRoleMenu();
+                roleMenu.MenuId = (byte)menuId;
+                role.SysRoleMenu.Add(roleMenu);
+            }
+
+            foreach(var menuId in deleteMenus)
+            {
+                var roleMenu = role.SysRoleMenu.FirstOrDefault(r => r.MenuId == menuId);
+                role.SysRoleMenu.Remove(roleMenu);
+            }
+
+            SaveChanges();
+
+            return true;
         }
     }
 }

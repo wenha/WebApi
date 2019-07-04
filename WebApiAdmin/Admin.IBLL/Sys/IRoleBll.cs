@@ -58,6 +58,13 @@ namespace Admin.IBLL.Sys
         List<SysMenu> GetAllMenu();
 
         /// <summary>
+        /// 根绝Id获取角色的菜单
+        /// </summary>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
+        List<SysMenu> GetRoleMenu(int roleId);
+
+        /// <summary>
         /// 保存角色菜单权限
         /// </summary>
         /// <param name="roleId"></param>

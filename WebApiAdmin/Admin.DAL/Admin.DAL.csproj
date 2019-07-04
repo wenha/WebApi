@@ -70,6 +70,7 @@
     <Compile Include="BaseDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys\AccountDal.cs" />
+    <Compile Include="Sys\MenuDal.cs" />
     <Compile Include="Sys\OrganDal.cs" />
     <Compile Include="Sys\RoleDal.cs" />
     <Compile Include="Sys\UserDal.cs" />
