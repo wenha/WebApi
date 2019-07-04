@@ -73,8 +73,33 @@ namespace Admin.WebApi.Controllers
                 SessionId = token;
             }
 
-            Session = new RedisSession(RedisDB, SessionId);
-            Session.Timeout = SessionTimeout; //60 * 24 * 7; //一星期过期时间
+            var cookie = HttpContext.Current.Request.Cookies.Get("adminssession");
+            if (string.IsNullOrWhiteSpace(token) && cookie != null && !string.IsNullOrWhiteSpace(cookie.Value) && cookie.Value != "undefined")
+            {
+                SessionId = cookie.Value;
+            }
+            CreateNewSession(SessionId);
+        }
+
+        protected void CreateNewSession(string sessionId)
+        {
+            SessionId = sessionId;
+            if (Session != null)
+            {
+                Session.Clear();
+                Session.Timeout = 1;
+            }
+
+            Session = new RedisSession(RedisDB, sessionId);
+            Session.Timeout = SessionTimeout;
+
+            var cookie = new HttpCookie("adminssession", SessionId);
+            cookie.HttpOnly = true;
+            HttpContext.Current.Response.Cookies.Add(cookie);
+            HttpContext.Current.Response.Headers.Add("TOKEN", SessionId);
+#if DEBUG
+            Session.Timeout = 60 * 8;
+#endif
         }
 
         #endregion
