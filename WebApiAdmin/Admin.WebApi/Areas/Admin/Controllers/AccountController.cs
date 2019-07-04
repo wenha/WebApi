@@ -61,7 +61,8 @@ namespace Admin.WebApi.Areas.Admin.Controllers
                 Id = account.Id,
                 Name = account.Name,
                 UserName = account.LoginName,
-
+                Avatar = "",
+                Access = new string[] {""}
             };
             resData.Data = SessionId;
             return SetMessage(resData);

@@ -29,9 +29,9 @@ export default {
     handleSubmit ({ userName, password, code }) {
       this.handleLogin({ userName, password, code }).then(res => {
         console.log(res)
-        if (!res.data.success) {
+        if (!res.data.IsSuccess) {
           this.$refs['login-form'].loadingFalse()
-          this.$Message.error(res.data.msg)
+          this.$Message.error(res.data.Msg)
           if (res.data.status !== 'WrongYzm') {
             this.$refs['login-form'].getValidateImage()
           }

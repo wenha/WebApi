@@ -1,5 +1,4 @@
 import Main from '@/components/main'
-import system from './system'
 
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -19,60 +18,24 @@ import system from './system'
 
 export default [
   {
-    path: '/login',
-    name: 'login',
+    path: '/system',
+    name: 'system',
     meta: {
-      title: 'Login - 登录',
+      title: '系统设置',
+      icon: 'md-home',
       hideInMenu: true
     },
-    component: () => import('@/view/login/login.vue')
-  },
-  {
-    path: '/',
-    name: '_home',
-    redirect: '/home',
-    component: Main,
-    meta: {
-      hideInMenu: true,
-      notCache: true
-    },
+    // component: Main,
     children: [
       {
-        path: '/home',
-        name: 'home',
+        path: 'role',
+        name: 'sys_role',
         meta: {
-          hideInMenu: true,
-          title: '首页',
-          notCache: true,
+          title: '角色管理',
           icon: 'md-home'
         },
-        component: () => import('@/view/single-page/home')
+        component: () => import('@/view/system/role.vue')
       }
     ]
-  },
-  // system,
-  {
-    path: '/401',
-    name: 'error_401',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/401.vue')
-  },
-  {
-    path: '/500',
-    name: 'error_500',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/500.vue')
-  },
-  {
-    path: '*',
-    name: 'error_404',
-    meta: {
-      hideInMenu: true
-    },
-    component: () => import('@/view/error-page/404.vue')
   }
 ]

@@ -73,12 +73,11 @@ export default {
         try {
           // todo:获取用户信息
           getUserInfo(state.token).then(res => {
-            console.log('getUserInfo', res)
-            const data = res.data.data
-            commit('setAvator', data.avator)
-            commit('setUserName', data.name)
-            commit('setUserId', data.code)
-            commit('setAccess', data.access)
+            const data = res.data.Data
+            commit('setAvator', data.Avator)
+            commit('setUserName', data.Name)
+            commit('setUserId', data.Id)
+            commit('setAccess', data.Access)
             resolve(res)
           }).catch(err => {
             reject(err)
