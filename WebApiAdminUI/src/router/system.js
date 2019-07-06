@@ -16,26 +16,41 @@ import Main from '@/components/main'
  * }
  */
 
-export default [
-  {
-    path: '/system',
-    name: 'system',
-    meta: {
-      title: '系统设置',
-      icon: 'md-home',
-      hideInMenu: true
+export default {
+  path: '/system',
+  name: 'system',
+  component: Main,
+  meta: {
+    title: '系统设置',
+    icon: 'ios-construct'
+  },
+  children: [
+    {
+      path: 'sys_organ',
+      name: 'sys_organ',
+      meta: {
+        title: '机构管理',
+        icon: 'ios-home'
+      },
+      component: () => import('@/view/system/role/role.vue')
     },
-    // component: Main,
-    children: [
-      {
-        path: 'role',
-        name: 'sys_role',
-        meta: {
-          title: '角色管理',
-          icon: 'md-home'
-        },
-        component: () => import('@/view/system/role.vue')
-      }
-    ]
-  }
-]
+    {
+      path: 'sys_account',
+      name: 'sys_account',
+      meta: {
+        title: '用户管理',
+        icon: 'md-contacts'
+      },
+      component: () => import('@/view/system/role/role.vue')
+    },
+    {
+      path: 'sys_role',
+      name: 'sys_role',
+      meta: {
+        title: '角色管理',
+        icon: 'ios-help-buoy'
+      },
+      component: () => import('@/view/system/role/role.vue')
+    }
+  ]
+}

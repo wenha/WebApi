@@ -45,7 +45,7 @@ namespace Admin.BLL.Sys
         /// <returns></returns>
         public List<VmRole> GetAllRole()
         {
-            var dmRoles = RoleDal.Value.GetQueryable().Where(r => !r.IsDelete);
+            var dmRoles = RoleDal.Value.GetQueryable().Where(r => !r.IsDelete && r.Name != "Admin");
 
             var vmRoles = (from r in dmRoles
                            select new VmRole

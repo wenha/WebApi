@@ -25,7 +25,7 @@ namespace Admin.DAL.Sys
             var db = DbContext;
 
             var dm = (from r in db.SysRole
-                      where r.IsDelete == false
+                      where r.IsDelete == false && r.Name != "Admin"
                       select new VmRole
                       {
                           Id = r.Id,

@@ -135,7 +135,6 @@ namespace Admin.WebApi.Areas.Admin.Controllers
             return SetMessage(resData);
         }
 
-
         /// <summary>
         /// 获取树状组织机构列表
         /// </summary>

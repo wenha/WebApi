@@ -1,20 +1,26 @@
 {
-    "eslint.autoFixOnSave": true,
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      {
-        "language": "html",
-        "autoFix": true
-      },
-      {
-        "language": "vue",
-        "autoFix": true
-      }
-    ],
-    "prettier.eslintIntegration": true,
-    "search.exclude": {
-      "**/dist": true
+  "svn.multipleFolders.ignore": [
+    "**/.git",
+    "**/.hg",
+    "**/vendor",
+    "**/node_modules"
+  ],
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "html",
+      "autoFix": true
     },
-    "vetur.validation.template": false
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "prettier.eslintIntegration": true,
+  "search.exclude": {
+    "**/dist": true
+  },
+  "vetur.validation.template": false,
 }

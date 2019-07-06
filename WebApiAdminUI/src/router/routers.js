@@ -50,7 +50,7 @@ export default [
       }
     ]
   },
-  // system,
+  system,
   {
     path: '/401',
     name: 'error_401',

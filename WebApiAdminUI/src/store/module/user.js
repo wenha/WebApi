@@ -9,13 +9,13 @@ export default {
   state: {
     userName: '',
     userId: '',
-    avatorImgPath: '',
+    avatarImgPath: '',
     token: getToken(),
     access: ''
   },
   mutations: {
-    setAvator (state, avatorPath) {
-      state.avatorImgPath = avatorPath
+    setAvatar (state, avatarPath) {
+      state.avatarImgPath = avatarPath
     },
     setUserId (state, id) {
       state.userId = id
@@ -42,8 +42,8 @@ export default {
           code
         }).then(res => {
           const data = res.data
-          if (data.success) {
-            commit('setToken', data.data.token)
+          if (data.IsSuccess) {
+            commit('setToken', data.Data)
           }
           resolve(res)
         }).catch(err => {
@@ -71,10 +71,9 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
-          // todo:获取用户信息
           getUserInfo(state.token).then(res => {
             const data = res.data.Data
-            commit('setAvator', data.Avator)
+            commit('setAvatar', data.Avatar)
             commit('setUserName', data.Name)
             commit('setUserId', data.Id)
             commit('setAccess', data.Access)
