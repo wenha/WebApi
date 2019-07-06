@@ -199,7 +199,7 @@ namespace Admin.WebApi.Controllers
             return SetMessage(new ApiReturnData<ReturnPagging<TR>>()
             {
                 IsSuccess = true,
-                Code = "0",
+                Code = "OK",
                 Data = returnPagging
             });
         }

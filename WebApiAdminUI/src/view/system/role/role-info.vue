@@ -81,6 +81,7 @@ export default {
           return
         }
         saveRole(this.infoForm).then(res => {
+          debugger
           if (res.data.IsSuccess) {
             this.showInfo = false
             this.$Message.success(res.data.Msg)
